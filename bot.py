@@ -23,16 +23,17 @@ async def on_message(message):
         
         # Archive text messages
         async for msg in channel.history(limit=None):
-            with open(f'{archive_folder}/{channel.name}_archive.txt', 'a', encoding='utf-8') as file:  # Specify UTF-8 encoding
+            with open(f'{archive_folder}/{channel.name}_archive.txt', 'a', encoding='utf-8') as file:
                 try:
                     file.write(f'{msg.created_at} - {msg.author}: {msg.content}\n')
+                    if msg.attachments:  # Check attachments of the current message
+                        with open(f'{archive_folder}/{channel.name}_archive.txt', 'a', encoding='utf-8') as file:
+                            for attachment in msg.attachments:
+                                filename = attachment.filename
+                                file.write(f'{msg.created_at} - {msg.author}: {filename}\n')
+                                await attachment.save(f'{archive_folder}/{filename}')  # Save image
                 except UnicodeEncodeError:
                     print(f"Skipping message with Unicode characters: {msg.content}")
-        
-        # Archive images
-        for attachment in message.attachments:  # Iterate over message attachments using a regular for loop
-            await attachment.save(f'{archive_folder}/{attachment.filename}')
-
 
 # Run the bot
 client.run('ENTER BOT TOKEN HERE')
