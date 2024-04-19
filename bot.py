@@ -27,13 +27,22 @@ async def on_message(message):
                 try:
                     file.write(f'{msg.created_at} - {msg.author}: {msg.content}\n')
                     if msg.attachments:  # Check attachments of the current message
-                        with open(f'{archive_folder}/{channel.name}_archive.txt', 'a', encoding='utf-8') as file:
-                            for attachment in msg.attachments:
-                                filename = attachment.filename
-                                file.write(f'{msg.created_at} - {msg.author}: {filename}\n')
-                                await attachment.save(f'{archive_folder}/{filename}')  # Save image
+                        try:
+                            with open(f'{archive_folder}/{channel.name}_archive.txt', 'a', encoding='utf-8') as file:
+                                for attachment in msg.attachments:
+                                    filename = attachment.filename
+                                    file.write(f'{msg.created_at} - {msg.author}: {filename}\n')
+                                    await attachment.save(f'{archive_folder}/{filename}')  # Save image
+                        except FileNotFoundError:
+                            print(f"Skipping attachment with invalid file name: {msg.attachments}")
+                        except Exception as e:
+                            print(f"There was an error saving the following attachment: {msg.attachments}")
                 except UnicodeEncodeError:
                     print(f"Skipping message with Unicode characters: {msg.content}")
+                except OSError:
+                    print(f"There was an error arciving a message: {msg.content}. This could be a network issue.")
+                except Exception as e:
+                    print(f"The following error occured when trying to save {msg.content}: {e}")
 
 # Run the bot
 client.run('ENTER BOT TOKEN HERE')
