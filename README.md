@@ -3,8 +3,8 @@ A Discord bot that makes and stores an archive of every message sent in a Discor
 
 # How to install
 ## Requirements
-- [Python 3.12]([url]https://www.python.org/downloads/)
-- A [Discord Developer Portal]([url]https://discord.com/developers/applications) Account
+- [Python 3.12](https://www.python.org/downloads/)
+- A [Discord Developer Portal](https://discord.com/developers/applications) Account
 
 ## Setup
 _Basic Python and Discord bot knowledge may be required for setup._
