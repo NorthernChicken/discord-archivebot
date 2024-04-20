@@ -11,3 +11,7 @@ _This guide assumes you have basic knowledge of python and setting up Discord bo
 4. Invite the bot to your server in the Discord Developer portal.
 5. Send the message "!archive" in the text channel you want to archive.
 6. Check the new folder "message_archive" with the new text file.
+
+# DISCLAIMERS
+* This bot requires Administrator on your Discord server. This is a dangerous permission to give out. I am not doing anything malicious, but please check my code for yourself, don't take my word for it.
+* Do not use this bot for malicious purposes, and only archive a server with the server member's consent. 
