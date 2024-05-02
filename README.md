@@ -1,5 +1,5 @@
 # discord-archivebot
-A Discord bot that makes and stores an archive of every message sent in a Discord text channel. Still under development.
+A Discord bot that makes and stores an archive of every message sent in a Discord text channel.
 
 # How to install
 ## Requirements
@@ -15,6 +15,10 @@ _Basic Python and Discord bot knowledge may be required for setup._
 5. Invite the bot to your server in the Discord Developer portal - Go to your bot, click "installations," and check "Bot" and "Administrator." Copy the invite link to your browser and select the server you want to invite it to.
 6. Send the message "!archive" in the text channel you want to archive.
 7. The folder with the bot now has a subfolder called "message_archive" with the archived content.
+
+# Known Issues
+ - Issues when saving multiple attachments with the same filename
+ - Doesn't archive attachments with really long/invalid character filenames
 
 # DISCLAIMERS
 * This bot requires Administrator on your Discord server. This is a dangerous permission to give out. I am not doing anything malicious, but please check my code for yourself, don't take my word for it.
