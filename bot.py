@@ -37,7 +37,7 @@ async def on_message(message):
                         except Exception as e:
                             print(f"There was an error saving the following attachment: {msg.attachments}")
                 except UnicodeEncodeError:
-                    print(f"Skipping message with Unicode characters: {msg.content}")
+                    print(f"Skipping message with invalid characters: {msg.content}")
                 except OSError:
                     print(f"There was an error arciving a message: {msg.content}. This could be a network issue.")
                 except Exception as e:
